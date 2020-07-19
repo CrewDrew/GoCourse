@@ -1,29 +1,39 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+const n int = 100
+const initN int = 550 // Столько нужно примерно перебрать целых чисел, чтобы набрать 100 простых
 
 func main() {
-	f()
-	fmt.Println("Выполнение f завершено нормально.")
-}
 
-func f() {
-	defer func() {
-		if r := recover(); r != nil {
-			fmt.Println("Работа восстановлена в f", r)
-		}
-	}()
-	fmt.Println("Вызов g.")
-	g(0)
-	fmt.Println("Выполнение g завершено нормально.")
-}
+	var primeNumbers [100]int
+	var intNumbers [600]int
 
-func g(i int) {
-	if i > 3 {
-		fmt.Println("Паника!")
-		panic(fmt.Sprintf("%v", i))
+	for i := range intNumbers {
+		intNumbers[i] = i
 	}
-	defer fmt.Println("Отложенный вызов в g", i)
-	fmt.Println("Вывод в g", i)
-	g(i + 1)
+
+	for p := 2; p < initN; p++ {
+		if intNumbers[p] != 0 {
+			for j := p * p; j < initN+1; j += p {
+				intNumbers[j] = 0
+			}
+		}
+	}
+
+	j := 0
+	for i := range intNumbers {
+		if intNumbers[i] > 0 && j < 100 {
+			primeNumbers[j] = intNumbers[i]
+			j++
+		}
+	}
+
+	for i := range primeNumbers {
+		fmt.Printf("Простое число №%d : %d\n", i+1, primeNumbers[i])
+	}
+
 }
