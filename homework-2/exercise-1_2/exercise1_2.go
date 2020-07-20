@@ -8,17 +8,16 @@ import (
 func parityOfNumber(value int64) (isEven bool, parityOfNumber string) {
 	if value%2 == 0 {
 		return true, "четное"
-	} else {
-		return false, "нечетное"
 	}
+	return false, "нечетное"
+
 }
 
 func multipleOfThree(value int64) (isMultipleOfThree bool, multipleOfThree string) {
 	if value%3 == 0 {
 		return true, "делится на три"
-	} else {
-		return false, "не делится на три"
 	}
+	return false, "не делится на три"
 }
 
 func main() {
