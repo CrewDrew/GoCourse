@@ -5,19 +5,19 @@ import (
 	"log"
 )
 
-func parityOfNumber(value int64) string {
+func parityOfNumber(value int64) (isEven bool, parityOfNumber string) {
 	if value%2 == 0 {
-		return "четное"
+		return true, "четное"
 	} else {
-		return "нечетное"
+		return false, "нечетное"
 	}
 }
 
-func multipleOfThree(value int64) string {
+func multipleOfThree(value int64) (isMultipleOfThree bool, multipleOfThree string) {
 	if value%3 == 0 {
-		return "делится на три"
+		return true, "делится на три"
 	} else {
-		return "не делится на три"
+		return false, "не делится на три"
 	}
 }
 
@@ -33,7 +33,10 @@ func main() {
 		log.Fatalln("Вы ввели не число")
 	}
 
-	fmt.Printf("Вы ввели %s число\n", parityOfNumber(someNumber))
-	fmt.Printf("Число %d %s\n", someNumber, multipleOfThree(someNumber))
+	_, isEvenStr := parityOfNumber(someNumber)
+	_, multipleOfThreeStr := multipleOfThree(someNumber)
+
+	fmt.Printf("Вы ввели %s число\n", isEvenStr)
+	fmt.Printf("Число %d %s\n", someNumber, multipleOfThreeStr)
 
 }
