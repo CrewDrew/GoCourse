@@ -7,7 +7,7 @@ type ChessBoardCell struct {
 
 // ChessPiece interface to chess figures
 type ChessPiece interface {
-	SetPosition(int, int)
+	SetPosition()
 	AvailablePositions() []ChessBoardCell
 }
 
@@ -28,7 +28,7 @@ func (p Pawn) AvailablePositions() []ChessBoardCell {
 }
 
 // SetPosition set the position to Pawn
-func (p *Pawn) SetPosition(newPosition ChessBoardCell) {
+func (p *Pawn) SetPosition(newPosition ChessBoardCell) error {
 	availablePositions := p.AvailablePositions()
 	if availablePositions != nil {
 		for _, position := range availablePositions {
