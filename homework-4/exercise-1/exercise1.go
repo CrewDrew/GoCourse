@@ -28,9 +28,15 @@ func (p Pawn) AvailablePositions() []ChessBoardCell {
 }
 
 // SetPosition set the position to Pawn
-func (p *Pawn) SetPosition(x int, y int) {
-	p.position.x = x
-	p.position.y = y
+func (p *Pawn) SetPosition(newPosition ChessBoardCell) {
+	availablePositions := p.AvailablePositions()
+	if availablePositions != nil {
+		for _, position := range availablePositions {
+			if position == newPosition {
+				p.position = newPosition
+			}
+		}
+	}
 }
 
 // GetPosition return current chess position
