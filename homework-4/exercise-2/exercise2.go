@@ -48,6 +48,7 @@ func main() {
 	adressBook = append(adressBook, contact{name: "Vasya", phonesList: phones{"+79231551234", "+79231551235"}})
 	adressBook = append(adressBook, contact{name: "Kolya", phonesList: phones{"+79231553423", "+79231554435"}})
 	adressBook = append(adressBook, contact{name: "Petya", phonesList: phones{"+79231534234", "+79231551555"}})
+	adressBook = append(adressBook, contact{name: "Angie", phonesList: phones{"+79231534234", "+79231551555"}})
 
 	adressBook.PrintAll()
 
